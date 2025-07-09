@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mywarehouse - Sistem Manajemen Gudang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="./css/tentangkami.css">
+    <style>
+        /* Additional Footer Styles */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 60px 0 30px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-col h3 {
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links span {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            cursor: default;
+        }
+        
+        .footer-links span:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        
+        .social-links span:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-bottom p {
+            margin: 0;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        .footer-bottom span {
+            color: #bdc3c7;
+            cursor: default;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-col {
+                flex: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../beranda.html" class="logo">
+                    <i class="fas fa-warehouse"></i>
+                    <h1>Gu<span>dangku</span></h1>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="../beranda.html">Beranda</a></li>
+                        <li><a href="../web/tentangkami.html" class="active">Tentang Kami</a></li>
+                        <li><a href="../web/kontak.html">Kontak</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions">
+                    <button class="btn btn-outline" style="margin-top: 6px;" onclick="window.location.href='../index.html'">Login</button>
+                </div>
+                <button class="menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Content -->
+    <div class="screen screen-active">
+        <div class="container">
+            <div class="public-page-container">
+                <div class="page-header">
+                    <h2><i class="fas fa-building"></i> Tentang Gudangku</h2>
+                    <p>Platform Manajemen Gudang Terintegrasi untuk Efisiensi Operasional</p>
+                </div>
+                
+                <div class="public-page-content">
+                    <div style="display: flex; gap: 40px; margin-bottom: 40px; flex-wrap: wrap;">
+                        <div style="flex: 1; min-width: 300px;">
+                            <h4 style="margin-bottom: 20px; color: var(--dark);">Visi dan Misi Kami</h4>
+                            <p style="margin-bottom: 20px;">Gudangku dikembangkan sejak 2018 dengan visi mentransformasi manajemen gudang melalui teknologi digital. Kami menyediakan solusi komprehensif untuk manager, staff, dan administrator gudang.</p>
+                            
+                            <div style="margin-top: 30px;">
+                                <h5 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-bullseye" style="color: var(--secondary);"></i> Visi Kami</h5>
+                                <p>Menjadi platform manajemen gudang terdepan yang meningkatkan efisiensi operasional melalui solusi teknologi terintegrasi.</p>
+                            </div>
+                            
+                            <div style="margin-top: 25px;">
+                                <h5 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;"><i class="fas fa-tasks" style="color: var(--secondary);"></i> Misi Kami</h5>
+                                <ul style="list-style: none;">
+                                    <li style="margin-bottom: 10px; display: flex; gap: 10px;"><i class="fas fa-check" style="color: var(--success);"></i> Menyediakan sistem manajemen inventori real-time</li>
+                                    <li style="margin-bottom: 10px; display: flex; gap: 10px;"><i class="fas fa-check" style="color: var(--success);"></i> Mempermudah kolaborasi antara manager, staff, dan admin</li>
+                                    <li style="margin-bottom: 10px; display: flex; gap: 10px;"><i class="fas fa-check" style="color: var(--success);"></i> Mengotomatisasi proses gudang untuk mengurangi kesalahan</li>
+                                    <li style="display: flex; gap: 10px;"><i class="fas fa-check" style="color: var(--success);"></i> Memberikan analitik canggih untuk pengambilan keputusan</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="flex: 1; min-width: 300px; background: #f0f4f8; border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; min-height: 300px;">
+                            <i class="fas fa-boxes" style="font-size: 120px; color: var(--secondary);"></i>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 style="margin-bottom: 20px; color: var(--dark);">Tim Pengembang</h4>
+                        <div class="about-team">
+                            <div class="team-member">
+                                <div class="member-photo">BS</div>
+                                <div class="member-name">Azhar Didan</div>
+                                <div class="member-position">CEO & Founder</div>
+                                <p>Ahli sistem logistik dengan pengalaman 15 tahun dalam solusi manajemen gudang.</p>
+                            </div>
+                            
+                            <div class="team-member">
+                                <div class="member-photo">SR</div>
+                                <div class="member-name">Lutvhy Nurdiansyah</div>
+                                <div class="member-position">Product Manager</div>
+                                <p>Merancang fitur untuk kebutuhan manager gudang dan tim operasional.</p>
+                            </div>
+                            
+                            <div class="team-member">
+                                <div class="member-photo">AP</div>
+                                <div class="member-name">M. Rizky O</div>
+                                <div class="member-position">CTO</div>
+                                <p>Mengembangkan arsitektur sistem dan integrasi dengan perangkat gudang.</p>
+                            </div>
+                            
+                            <div class="team-member">
+                                <div class="member-photo">DW</div>
+                                <div class="member-name">Arifin Noor</div>
+                                <div class="member-position">UX Specialist</div>
+                                <p>Mendesain antarmuka yang intuitif untuk staff lapangan dan administrator.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Tentang Gudangku</h3>
+                <p>Gudangku adalah platform manajemen gudang terintegrasi yang membantu bisnis mengoptimalkan operasional logistik dan inventori mereka dengan solusi berbasis teknologi.</p>
+                <div class="social-links">
+                    <span><i class="fab fa-facebook-f"></i></span>
+                    <span><i class="fab fa-twitter"></i></span>
+                    <span><i class="fab fa-instagram"></i></span>
+                    <span><i class="fab fa-linkedin-in"></i></span>
+                    <span><i class="fab fa-youtube"></i></span>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Link Cepat</h3>
+                <ul class="footer-links">
+                    <li><span>Beranda</span></li>
+                    <li><span>Tentang Kami</span></li>
+                    <li><span>Kontak</span></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Layanan</h3>
+                <ul class="footer-links">
+                    <li><span>Manajemen Inventori</span></li>
+                    <li><span>Pelacakan Stok</span></li>
+                    <li><span>Analitik Gudang</span></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Hubungi Kami</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. PHH Mustopa No.68, Bandung</p>
+                <p><i class="fas fa-phone"></i> +62 822 6306 8791</p>
+                <p><i class="fas fa-envelope"></i> support@mywarehouse.id</p>
+                <p><i class="fas fa-clock"></i> Senin-Jumat: 8:00-17:00</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 Mywarehouse. All Rights Reserved. | <span>Kebijakan Privasi</span> | <span>Syarat & Ketentuan</span></p>
+        </div>
+    </footer>
+</body>
+</html>

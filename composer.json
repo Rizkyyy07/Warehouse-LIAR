@@ -1,0 +1,7 @@
+{
+    "name": "asus/warehouse",
+    "type": "project",
+    "require": {
+        "dompdf/dompdf": "^3.1"
+    }
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Akun | Warehouse System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    :root {
+      --primary: #4b6cb7;
+      --primary-dark: #182848;
+      --accent: #3a86ff;
+      --text: #2d3748;
+      --text-light: #4a5568;
+      --bg: #f0f4f8;
+      --card-bg: rgba(255, 255, 255, 0.96);
+      --input-bg: #f8fafc;
+      --border: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url('wareh1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: var(--text);
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(30, 60, 114, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: -1;
+    }
+
+    .form-container {
+      background: var(--card-bg);
+      width: 100%;
+      max-width: 420px;
+      padding: 2.5rem;
+      border-radius: 1.25rem;
+      box-shadow: 0 1.5rem 3rem -0.75rem rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .form-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0.375rem;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+      animation: rainbow 8s linear infinite;
+      background-size: 400% 400%;
+    }
+
+    .form-logo {
+      width: 4rem;
+      height: 4rem;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      box-shadow: 0 0.5rem 1.5rem rgba(75, 108, 183, 0.3);
+    }
+
+    h2 {
+      color: var(--primary-dark);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3rem;
+      height: 0.25rem;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 0.25rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 1rem 1.25rem 1rem 3rem;
+      border: 2px solid var(--border);
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      transition: all 0.3s;
+      background-color: var(--input-bg);
+      color: var(--text);
+      appearance: none;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.25rem rgba(75, 108, 183, 0.15);
+      background-color: white;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      font-size: 1.125rem;
+    }
+
+    .select-arrow {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      pointer-events: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.625rem;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--text-light);
+      font-size: 0.875rem;
+    }
+
+    .login-link a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 1.75rem;
+        margin: 1rem;
+        width: calc(100% - 2rem);
+      }
+      
+      input, select {
+        padding: 0.875rem 1rem 0.875rem 2.5rem;
+      }
+      
+      .input-icon {
+        font-size: 1rem;
+        left: 0.875rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container animate__animated animate__fadeInUp">
+    <div class="form-logo animate__animated animate__bounceIn">
+      <i class="fas fa-user-plus"></i>
+    </div>
+    <h2 class="animate__animated animate__fadeIn">Daftar Akun</h2>
+    
+    <form action="register.php" method="POST">
+      <div class="form-group animate__animated animate__fadeIn animate__delay-1s">
+        <div class="input-wrapper">
+          <i class="fas fa-user input-icon"></i>
+          <input type="text" name="username" placeholder="Username" required>
+        </div>
+      </div>
+      
+      <div class="form-group animate__animated animate__fadeIn animate__delay-1s">
+        <div class="input-wrapper">
+          <i class="fas fa-lock input-icon"></i>
+          <input type="password" name="password" placeholder="Password" required>
+        </div>
+      </div>
+      
+      <div class="form-group animate__animated animate__fadeIn animate__delay-1s">
+        <div class="input-wrapper">
+          <i class="fas fa-user-tag input-icon"></i>
+          <select name="role" required>
+            <option value="">-- Pilih Role --</option>
+            <option value="admin">Admin</option>
+            <option value="staff">Staff</option>
+            <option value="manager">Manager</option>
+          </select>
+          <i class="fas fa-chevron-down select-arrow"></i>
+        </div>
+      </div>
+      
+      <button type="submit" class="animate__animated animate__fadeIn animate__delay-2s">
+        <i class="fas fa-user-plus"></i> Daftar Akun
+      </button>
+    </form>
+    
+    <div class="login-link animate__animated animate__fadeIn animate__delay-2s">
+      Sudah punya akun? <a href="index.html">Masuk disini</a>
+    </div>
+  </div>
+
+  <script>
+    // Simple animation on form submission
+    const form = document.querySelector('form');
+    
+    form.addEventListener('submit', function(e) {
+      const button = this.querySelector('button[type="submit"]');
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Membuat akun...';
+      button.disabled = true;
+    });
+  </script>
+</body>
+</html>

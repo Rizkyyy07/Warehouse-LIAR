@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warehouse Management Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      perspective: 1000px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background image with blur effect */
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('wareh2.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px) brightness(0.6);
+      z-index: -1;
+      transform: scale(1.1); /* Prevents blur edge artifacts */
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.95);
+      width: 420px;
+      padding: 50px 40px;
+      border-radius: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                  0 0 0 1px rgba(255, 255, 255, 0.1);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: fadeInUp 0.8s ease-out;
+      backdrop-filter: blur(2px);
+    }
+
+    .login-container:hover {
+      transform: translateY(-5px) rotateX(2deg);
+      box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.3),
+                  0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .login-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+      animation: rainbow 8s linear infinite;
+      background-size: 400% 400%;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      font-weight: 700;
+      box-shadow: 0 10px 20px rgba(75, 108, 183, 0.3);
+      animation: bounceIn 0.8s ease-out;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      color: #2a5298;
+      font-weight: 600;
+      font-size: 24px;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+      border-radius: 3px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: #f8fafc;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #4b6cb7;
+      box-shadow: 0 0 0 4px rgba(75, 108, 183, 0.1);
+      background-color: white;
+      transform: translateY(-2px);
+    }
+
+    .input-icon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+    }
+
+    button {
+      background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-top: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    button:hover::before {
+      left: 100%;
+    }
+
+    .forgot-password {
+      margin-top: 15px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .forgot-password a {
+      color: #4b6cb7;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .forgot-password a:hover {
+      color: #182848;
+      text-decoration: underline;
+    }
+
+    .footer-text {
+      margin-top: 30px;
+      color: #64748b;
+      font-size: 12px;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        width: 90%;
+        padding: 40px 25px;
+      }
+      
+      .logo {
+        width: 70px;
+        height: 70px;
+        font-size: 24px;
+      }
+      
+      .background-image {
+        filter: blur(5px) brightness(0.6);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Blurred background image -->
+  <div class="background-image"></div>
+  
+  <!-- Login container -->
+  <div class="login-container animate__animated animate__fadeInUp">
+    <div class="logo animate__animated animate__bounceIn">WL</div>
+    <h2 class="animate__animated animate__fadeIn">Warehouse LIAR</h2>
+    <form action="login.php" method="POST">
+      <div class="input-group">
+        <input type="text" name="username" placeholder="Username" required class="animate__animated animate__fadeIn animate__delay-1s">
+        <div class="input-icon">👤</div>
+      </div>
+      <div class="input-group">
+        <input type="password" name="password" placeholder="Password" required class="animate__animated animate__fadeIn animate__delay-1s">
+        <div class="input-icon">🔒</div>
+      </div>
+      <button type="submit" class="animate__animated animate__fadeIn animate__delay-1s">Login</button>
+        <!-- Tambahkan ini di bawah tombol Login -->
+      <a href="register.html">
+        <button type="button" style="margin-top:10px; background: #e2e8f0; color:#2a5298;">Daftar</button>
+      </a>
+
+      <div class="forgot-password animate__animated animate__fadeIn animate__delay-2s">
+        <a href="#">Forgot password?</a>
+      </div>
+    </form>
+    <div class="footer-text animate__animated animate__fadeIn animate__delay-2s">
+      © 2023 Warehouse LIAR
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.login-container').addEventListener('mousemove', (e) => {
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+      document.querySelector('.login-container').style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    });
+
+    document.querySelector('.login-container').addEventListener('mouseleave', () => {
+      document.querySelector('.login-container').style.transform = 'rotateY(0deg) rotateX(0deg)';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gudangku - Sistem Manajemen Gudang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="web/css/beranda.css">
+    <style>
+        /* Animation Styles */
+        @keyframes popUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply animations to text elements */
+        .carousel-caption h3,
+        .carousel-caption p,
+        .carousel-caption .btn,
+        .section-header h3,
+        .feature-item h4,
+        .feature-item p,
+        .feature-item .feature-icon,
+        .cta-section h3,
+        .cta-section p,
+        .cta-section .btn,
+        .footer-col h3,
+        .footer-col p,
+        .footer-links li,
+        .footer-bottom p {
+            animation: popUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Staggered animations */
+        .carousel-caption h3 { animation-delay: 0.2s; }
+        .carousel-caption p { animation-delay: 0.4s; }
+        .carousel-caption .btn { animation-delay: 0.6s; }
+        
+        .section-header h3 { animation-delay: 0.3s; }
+        
+        .feature-item:nth-child(1) { animation-delay: 0.4s; }
+        .feature-item:nth-child(2) { animation-delay: 0.6s; }
+        .feature-item:nth-child(3) { animation-delay: 0.8s; }
+        
+        .feature-item h4 { animation-delay: 0.2s; }
+        .feature-item p { animation-delay: 0.3s; }
+        .feature-item .feature-icon { animation-delay: 0.1s; }
+        
+        .cta-section h3 { animation-delay: 0.2s; }
+        .cta-section p { animation-delay: 0.4s; }
+        .cta-section .btn { animation-delay: 0.6s; }
+        
+        .footer-col:nth-child(1) * { animation-delay: 0.2s; }
+        .footer-col:nth-child(2) * { animation-delay: 0.3s; }
+        .footer-col:nth-child(3) * { animation-delay: 0.4s; }
+        .footer-col:nth-child(4) * { animation-delay: 0.5s; }
+        
+        .footer-bottom p { animation-delay: 0.6s; }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 60px 0 30px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-col h3 {
+            color: #fff;
+            margin-bottom: 25px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-bottom p {
+            margin: 0;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        .footer-bottom a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-bottom a:hover {
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .footer-col {
+                flex: 100%;
+            }
+            
+            /* Adjust animation delays for mobile */
+            .feature-item:nth-child(1) { animation-delay: 0.3s; }
+            .feature-item:nth-child(2) { animation-delay: 0.5s; }
+            .feature-item:nth-child(3) { animation-delay: 0.7s; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="beranda.html" class="logo" id="homeLink">
+                    <i class="fas fa-warehouse"></i>
+                    <h1>Gu<span>dangku</span></h1>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="beranda.html" class="active" data-page="home">Beranda</a></li>
+                        <li><a href="web/tentangkami.html" data-page="about">Tentang Kami</a></li>
+                        <li><a href="web/kontak.html" data-page="contact">Kontak</a></li>
+                    </ul>
+                </nav>
+                <div class="user-actions" id="userActions">
+                    <button class="btn btn-outline" onclick="window.location.href='index.html'">Login</button>
+                </div>
+                <button class="menu-btn" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Screen -->
+    <div class="screen screen-active" id="homeScreen">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="background-image: url('warehouse23.jpg');">
+                        <div class="carousel-caption">
+                            <h3>Sistem Manajemen Gudang Terintegrasi</h3>
+                            <p>Solusi lengkap untuk manajemen inventori, stok, dan operasional gudang Anda</p>
+                            <button class="btn btn-primary" onclick="window.location.href='index.html'">Mulai Sekarang</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('warehouse24.jpg');">
+                        <div class="carousel-caption">
+                            <h3>Platform Kolaborasi Tim Gudang</h3>
+                            <p>Fitur lengkap untuk manager, staff, dan administrator dalam satu sistem terpadu</p>
+                            <button class="btn btn-primary" onclick="window.location.href='index.html'">Lihat Fitur</button>
+                        </div>
+                    </div>
+                    <div class="carousel-item" style="background-image: url('warehouse25.jpg');">
+                        <div class="carousel-caption">
+                            <h3>Pelacakan Real-time</h3>
+                            <p>Pantau pergerakan barang, stok, dan aktivitas gudang secara real-time</p>
+                            <button class="btn btn-primary" onclick="window.location.href='index.html'">Pelajari Lebih Lanjut</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-nav-btn" id="prevBtn" aria-label="Previous slide">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-nav-btn" id="nextBtn" aria-label="Next slide">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="carousel-indicators">
+                    <button class="indicator active" data-index="0" aria-label="Slide 1"></button>
+                    <button class="indicator" data-index="1" aria-label="Slide 2"></button>
+                    <button class="indicator" data-index="2" aria-label="Slide 3"></button>
+                </div>
+            </div>
+
+            <!-- Featured Services -->
+            <div class="section-header">
+                <h3><i class="fas fa-star"></i> Fitur Unggulan Kami</h3>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4>Dashboard Manager</h4>
+                    <p>Fitur analitik lengkap untuk manager gudang dengan laporan real-time dan prediksi stok</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Manajemen Staff</h4>
+                    <p>Alokasi tugas, monitoring produktivitas, dan sistem absensi terintegrasi untuk staff gudang</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h4>Administrator Tools</h4>
+                    <p>Alat lengkap untuk mengatur hak akses, sistem, dan konfigurasi gudang secara menyeluruh</p>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section" style="background: var(--gradient-primary); border-radius: var(--border-radius); padding: 50px; text-align: center; margin-top: 60px; color: white;">
+                <h3 style="font-size: 32px; margin-bottom: 20px;">Siap Mengoptimalkan Operasional Gudang Anda</h3>
+                <p style="font-size: 18px; max-width: 700px; margin: 0 auto 30px;">Daftar sekarang atau login dibawah</p>
+                <button class="btn btn-warning" style="font-size: 18px; padding: 15px 40px;" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-right"></i> Klik Disini
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Tentang Gudangku</h3>
+                <p>Gudangku adalah platform manajemen gudang terintegrasi yang membantu bisnis mengoptimalkan operasional logistik dan inventori mereka dengan solusi berbasis teknologi.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Link Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="beranda.html">Beranda</a></li>
+                    <li><a href="web/tentangkami.html">Tentang Kami</a></li>
+                    <li><a href="web/kontak.html">Kontak</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Layanan</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Manajemen Inventori</a></li>
+                    <li><a href="#">Pelacakan Stok</a></li>
+                    <li><a href="#">Analitik Gudang</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Hubungi Kami</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. PHH Mustopa No.68, Bandung</p>
+                <p><i class="fas fa-phone"></i> +62 822 6306 8791</p>
+                <p><i class="fas fa-envelope"></i> support@gudangku.id</p>
+                <p><i class="fas fa-clock"></i> Senin-Jumat: 8:00-17:00</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; <span id="current-year"></span> Gudangku. All Rights Reserved. | <a href="privacy.html">Kebijakan Privasi</a> | <a href="terms.html">Syarat & Ketentuan</a></p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Initialize carousel
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+        let slideInterval;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // Function to update carousel
+        function updateCarousel() {
+            carouselItems.forEach((item, index) => {
+                item.classList.remove('active', 'next', 'prev');
+                
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                } else if (index === (currentIndex + 1) % carouselItems.length) {
+                    item.classList.add('next');
+                } else if (index === (currentIndex - 1 + carouselItems.length) % carouselItems.length) {
+                    item.classList.add('prev');
+                }
+            });
+
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+            
+            // Trigger animations for new slide
+            const activeSlide = document.querySelector('.carousel-item.active');
+            const captions = activeSlide.querySelectorAll('.carousel-caption h3, .carousel-caption p, .carousel-caption .btn');
+            
+            captions.forEach((caption, i) => {
+                caption.style.animation = 'none';
+                void caption.offsetWidth; // Trigger reflow
+                caption.style.animation = `popUp 0.6s ease-out ${i * 0.2 + 0.2}s forwards`;
+            });
+        }
+
+        // Function for next slide
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % carouselItems.length;
+            updateCarousel();
+        }
+
+        // Function for previous slide
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+            updateCarousel();
+        }
+
+        // Start auto slide
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Reset auto slide timer
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        // Stop auto slide
+        function stopAutoSlide() {
+            clearInterval(slideInterval);
+        }
+
+        // Event listeners for navigation buttons
+        nextBtn.addEventListener('click', function() {
+            nextSlide();
+            resetAutoSlide();
+        });
+
+        prevBtn.addEventListener('click', function() {
+            prevSlide();
+            resetAutoSlide();
+        });
+
+        // Event listeners for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function() {
+                currentIndex = index;
+                updateCarousel();
+                resetAutoSlide();
+            });
+        });
+
+        // Touch events for mobile swipe
+        document.querySelector('.carousel').addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoSlide();
+        }, {passive: true});
+
+        document.querySelector('.carousel').addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoSlide();
+        }, {passive: true});
+
+        function handleSwipe() {
+            const difference = touchStartX - touchEndX;
+            if (difference > 50) {
+                nextSlide(); // Swipe left
+            } else if (difference < -50) {
+                prevSlide(); // Swipe right
+            }
+        }
+
+        // Pause on hover
+        document.querySelector('.carousel').addEventListener('mouseenter', stopAutoSlide);
+        document.querySelector('.carousel').addEventListener('mouseleave', startAutoSlide);
+
+        // Initialize carousel
+        updateCarousel();
+        startAutoSlide();
+        
+        // Intersection Observer for scroll animations
+        const animateOnScroll = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target;
+                    const animation = element.style.animation;
+                    
+                    // Only animate if not already animated
+                    if (!animation || animation === 'none') {
+                        const delay = element.dataset.delay || '0s';
+                        element.style.animation = `popUp 0.6s ease-out ${delay} forwards`;
+                    }
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(animateOnScroll, {
+            threshold: 0.1
+        });
+
+        // Observe all elements with pop-up animation
+        document.querySelectorAll('[style*="animation: popUp"]').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.querySelector('nav');
+        
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            this.setAttribute('aria-expanded', nav.classList.contains('active'));
+        });
+    });
+    </script>
+</body>
+</html>
